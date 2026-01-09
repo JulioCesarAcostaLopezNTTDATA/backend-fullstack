@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: basic-crud
+  data:
+    mongodb:
+      uri: mongodb+srv://ro8jo36_db_user:ZUNxyUXVWGYjVw5q@cluster0.g5js0yr.mongodb.net/appdb?retryWrites=true&w=majority&appName=Cluster0
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers
+
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
+    org.mongodb.driver: INFO
