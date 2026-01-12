@@ -1,0 +1,29 @@
+<configuration>
+  <property name="APP_NAME" value="${spring.application.name:-backend-fullstack}"/>
+  <property name="APP_ENV" value="${APP_ENV:-local}"/>
+  <property name="APP_VERSION" value="${APP_VERSION:-dev}"/>
+
+  <appender name="JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+      <!-- campos base -->
+      <customFields>{"service":"${APP_NAME}","env":"${APP_ENV}","version":"${APP_VERSION}"}</customFields>
+      <!-- MDC keys (consistentes entre servicios) -->
+      <includeMdcKeyName>correlationId</includeMdcKeyName>
+      <includeMdcKeyName>transactionId</includeMdcKeyName>
+      <includeMdcKeyName>userId</includeMdcKeyName>
+      <includeMdcKeyName>endpoint</includeMdcKeyName>
+      <includeMdcKeyName>httpMethod</includeMdcKeyName>
+      <includeMdcKeyName>statusCode</includeMdcKeyName>
+      <includeMdcKeyName>latencyMs</includeMdcKeyName>
+      <includeMdcKeyName>errorCode</includeMdcKeyName>
+      <includeMdcKeyName>errorType</includeMdcKeyName>
+      <includeMdcKeyName>provider</includeMdcKeyName>
+      <includeMdcKeyName>providerLatencyMs</includeMdcKeyName>
+      <timeZone>UTC</timeZone>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="JSON_CONSOLE"/>
+  </root>
+</configuration>

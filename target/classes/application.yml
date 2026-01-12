@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: basic-crud
+  data:
+    mongodb:
+      uri: mongodb+srv://ro8jo36_db_user:ZUNxyUXVWGYjVw5q@cluster0.g5js0yr.mongodb.net/appdb?retryWrites=true&w=majority&appName=Cluster0
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers,prometheus
+
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
+    org.mongodb.driver: INFO
+
+security:
+  # expected JWT audience (optional)
+  audience: "my-api"
+  # DEV ONLY: set to enable HS256 validation locally (do not commit real secrets)
+  hmac-secret: "9c5f4594-312f-4eca-beb6-5a8db79015e8"
+  # CORS strict allowlist (empty = disabled)
+  cors-allowed-origins: []
